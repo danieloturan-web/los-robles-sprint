@@ -29,10 +29,10 @@ function App() {
   };
 
   return (
-    <div className="page">
+    <div className="pagina">
       <header className="topbar">
         <div className="brand">
-          <div className="badge">RLR </div>
+          <div className="badge">RLR</div>
           <div>
             <h1>Residencial Los Robles</h1>
             <p>Registro de residentes</p>
@@ -40,11 +40,12 @@ function App() {
         </div>
       </header>
 
-      <main className="container">
+      <main className="contenedor">
         <section className="card">
           <h2>Registro de residente</h2>
           <p className="hint">
-           Este módulo corresponde al Sprint 1 del sistema web del Residencial Los Robles, enfocado en el registro de residentes.
+            Este módulo corresponde al Sprint 1 del sistema web del Residencial
+            Los Robles, enfocado en el registro de residentes.
           </p>
 
           <form onSubmit={registrar} className="form">
@@ -74,10 +75,11 @@ function App() {
 
         <section className="card">
           <h2>Registros recientes</h2>
+
           {registros.length === 0 ? (
             <p className="hint">Aún no hay registros. Agrega el primero.</p>
           ) : (
-            <ul className="list">
+            <ul className="lista">
               {registros.map((r) => (
                 <li key={r.id} className="item">
                   <div>
