@@ -6,6 +6,9 @@ function App() {
   const [casa, setCasa] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [registros, setRegistros] = useState([]);
+  const [loginNombre, setLoginNombre] = useState("");
+  const [loginCasa, setLoginCasa] = useState("");
+  const [mensajeLogin, setMensajeLogin] = useState("");
 
   const registrar = (e) => {
     e.preventDefault();
@@ -28,6 +31,27 @@ function App() {
     setCasa("");
   };
 
+  const iniciarSesion = (e) => {
+    e.preventDefault();
+
+    if (!loginNombre.trim() || !loginCasa.trim()) {
+      setMensajeLogin("⚠️ Completa nombre y número de casa para iniciar sesión.");
+      return;
+    }
+
+    const existe = registros.find(
+      (r) =>
+        r.nombre.toLowerCase() === loginNombre.trim().toLowerCase() &&
+        r.casa.toLowerCase() === loginCasa.trim().toLowerCase()
+    );
+
+    if (existe) {
+      setMensajeLogin("✅ Inicio de sesión correcto.");
+    } else {
+      setMensajeLogin("❌ No se encontró un residente con esos datos.");
+    }
+  };
+
   return (
     <div className="pagina">
       <header className="topbar">
@@ -35,7 +59,7 @@ function App() {
           <div className="badge">RLR</div>
           <div>
             <h1>Residencial Los Robles</h1>
-            <p>Registro de residentes</p>
+            <p>Registro e inicio de sesión de residentes</p>
           </div>
         </div>
       </header>
@@ -44,8 +68,9 @@ function App() {
         <section className="card">
           <h2>Registro de residente</h2>
           <p className="hint">
-            Este módulo corresponde al Sprint 1 del sistema web del Residencial
-            Los Robles, enfocado en el registro de residentes.
+             En esta fase del Sprint 1 se integran el registro y el inicio de sesión de
+  residentes como parte del avance funcional del sistema web del Residencial
+  Los Robles.
           </p>
 
           <form onSubmit={registrar} className="form">
@@ -72,6 +97,38 @@ function App() {
             {mensaje && <div className="msg">{mensaje}</div>}
           </form>
         </section>
+
+          <section className="card">
+  <h2>Inicio de sesión</h2>
+  <p className="hint">
+     Este módulo permite validar el acceso de residentes previamente registrados
+  dentro de la demostración académica del sistema.
+  </p>
+
+  <form onSubmit={iniciarSesion} className="form">
+    <label>
+      Nombre del residente
+      <input
+        value={loginNombre}
+        onChange={(e) => setLoginNombre(e.target.value)}
+        placeholder="Ej. Daniel Torres"
+      />
+    </label>
+
+    <label>
+      Número de casa
+      <input
+        value={loginCasa}
+        onChange={(e) => setLoginCasa(e.target.value)}
+        placeholder="Ej. 12-B"
+      />
+    </label>
+
+    <button type="submit">Iniciar sesión</button>
+
+    {mensajeLogin && <div className="msg">{mensajeLogin}</div>}
+  </form>
+</section>
 
         <section className="card">
           <h2>Registros recientes</h2>
