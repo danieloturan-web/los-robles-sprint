@@ -148,6 +148,32 @@ function App() {
             </ul>
           )}
         </section>
+                <section className="card">
+          <h2>Revisión de modificaciones</h2>
+          <p className="hint">
+            Se documentaron mejoras relacionadas con el backlog, el avance del sprint
+            y la evidencia registrada en GitHub para fortalecer la entrega final del
+            proyecto.
+          </p>
+
+          <ul className="lista">
+            <li className="item">
+              <div>
+                <strong>Backlog actualizado</strong> — Revisión de historias de usuario y prioridades.
+              </div>
+            </li>
+            <li className="item">
+              <div>
+                <strong>Documentación</strong> — Actualización del archivo README.md del repositorio.
+              </div>
+            </li>
+            <li className="item">
+              <div>
+                <strong>GitHub</strong> — Registro de cambios mediante commits vinculados al avance.
+              </div>
+            </li>
+          </ul>
+        </section>
       </main>
 
       <footer className="footer">
